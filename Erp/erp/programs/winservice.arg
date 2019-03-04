@@ -1,0 +1,5 @@
+svcname:    Erp - Nelson technische Informatik
+workdir:    C:\Program Files\Nelson IT\Erp\erp\programs
+prog:       server.exe
+logfile:    server.log
+extrapath:  C:\cygwin64\bin;C:\Program Files\Git\bin;

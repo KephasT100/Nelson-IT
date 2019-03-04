@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+<head>
+
+<base href="#mne_base#">
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<title>ERP - Nelson technische Informatik</title>
+<link rel="shortcut icon" href="main/login/favicon.ico" type="image/x-icon">
+<style type="text/css">
+<!--
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+div#logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 75%;
+    width: 30%;
+    background: url(main/login/logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+div#content {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    
+    z-index: 10;
+}
+div#title {
+    padding: 10px;
+    
+    color:  #808080;
+    text-align: center; 
+    
+}
+
+div#title #schrift {
+    font-size: 36pt;
+}
+div#title table {
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+div#supported {
+    padding-left: 25%;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    visibility: hidden;
+}
+div#supported.nosupport {
+    visibility: visible;
+    background-color : red;
+    color : #fff;
+    font-weight: bold;
+}
+
+div#form {
+    padding-left: 25%;
+}
+
+div#form input[type=text], div#form input[type=password] {
+    border: 1px solid #808080;
+    width: 15em;
+}
+
+div#form #error {
+    color: #ff0000;
+}
+
+div#browser {
+    margin-top: 40px;
+    margin-right: 12px;
+    color:  #808080;
+}
+div#browser table {
+    margin-left: auto;
+    border : 1px solid #808080;
+    border-collapse: collapse; 
+}
+div#browser td {
+    padding: 4px;
+    border : 1px solid #808080;
+}
+
+tr.nosupport td {
+background-color : red;
+}
+-->
+</style>
+
+<script type="text/javascript" src="/extern/js/bowser/bowser.js"></script>
+<script type="text/javascript" src="main/login/mne_amisc.js"></script>
+
+<script>
+window.onload = function()
+{
+    var misc = new MneMisc(window);
+    misc.print_browser();
+    
+    document.body.setAttribute('aria-view-mode', 'mobile');
+
+    document.getElementById("location").value = window.location.href;
+    var cookies = document.cookie.split(';');
+    var i;
+    for ( i = 0; i< cookies.length; i++)
+      {
+      var c = cookies[i].split('=');
+      if ( c.length > 0 && c[0].replace(/ /g,"") == "MneHttpSessionLoginWrong" && c[1] == '1')
+      {
+       document.getElementById("error").innerHTML = "Username oder Password ist falsch";
+      }
+    }
+    document.cookie = "MneHttpSessionLoginWrong=; expires=Thu, 01-Jan-70 00:00:01 GMT;'";
+    document.getElementById('user').focus();
+}
+</script>
+<body>
+<div id="logo"></div>
+<div id='content'>
+<div id="title">
+      <table><tr><td style="text-align: left"><div id="schrift">ERP</div>
+      <div> Nelson - technische Informatik</div>
+      </td></tr>
+      </table>
+</div>
+
+<div id="supported">#mne_lang#Ihr Browser wird nicht komplett unterstützt#</div>
+<div id="form">
+  <form method="post" >
+    <input type="hidden" id="location" name="location" value= />
+    <table>
+      <tr><td align="right" colspan="2" id="error"></td></tr>
+      <tr><td>#mne_lang#Benutzer#: </td><td><input type="text"     name="mneuserloginname"  id="user" value="" autocapitalize="off"/></td></tr>
+      <tr><td>#mne_lang#Password#: </td><td><input type="password" name="mneuserpasswd" value="" autocapitalize="off"/></td></tr>
+      <tr><td align="right" colspan="2"><input type="submit" value="login" ></td></tr>
+    </table>
+  </form>
+  <div id="browser"></div>
+</div>
+</div>
+</body>
+</html>

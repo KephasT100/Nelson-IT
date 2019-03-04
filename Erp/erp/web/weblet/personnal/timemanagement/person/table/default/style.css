@@ -1,0 +1,79 @@
+#timemanagementpersontable td.personnal_timemanagement_person {
+    height: 20px;
+}
+#timemanagementpersontable td.personnal_timemanagement_personmonth {
+    padding: 0px;
+    height: 20px;
+}
+#timemanagementpersontable td.personnal_timemanagement_personname {
+    padding: 2px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 20px;
+}
+
+#timemanagementpersontable td.personnal_timemanagement_persontd0 {
+    background-color: #e0e0e0;
+}
+#timemanagementpersontable td.personnal_timemanagement_persontd6 {
+    background-color: #f0f0f0;
+}
+
+#timemanagementpersontable td.personnal_timemanagement_personhead {
+    padding: 2px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+#timemanagementpersontable td.personnal_timemanagement_personhead.personnal_timemanagement_persontd0 {
+    background-color: #a0a0a0;
+}
+#timemanagementpersontable td.personnal_timemanagement_personhead.personnal_timemanagement_persontd6 {
+    background-color: #b0b0b0;
+}
+
+#timemanagementpersontable div.personnal_timemanagement_personslot{
+    width: 32px;
+    position: relative;
+    height: 18px;
+    font-size: 10px;
+    overflow : hidden;
+}
+#timemanagementpersontable div.personnal_timemanagement_personslotelement0 {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0%;
+}
+#timemanagementpersontable div.personnal_timemanagement_personslotelement1 {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 25%;
+}
+#timemanagementpersontable div.personnal_timemanagement_personslotelement2 {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+}
+#timemanagementpersontable div.personnal_timemanagement_personslotelement3 {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 75%;
+}
+
+#timemanagementpersontable #timesTable {
+    overflow: visible;
+    padding: 1px;
+}
+#timemanagementpersontable #namesTable {
+    overflow: visible;
+    padding: 1px;
+    max-width: 400px;
+}
+

@@ -1,0 +1,80 @@
+div.print_main {
+}
+
+div.print_main #buttons{
+	padding: var(--margin);
+}
+div.print_main #meldungen{
+	margin: var(--dmargin);
+	padding: var(--margin);
+	
+	border: var(--border);
+	display: table;
+}
+
+div.print_row {
+	display: table-row;
+}
+
+div.print_ntsframe {
+	display: none;
+}
+div.print_ntsframe_show {
+	display: block;
+}
+
+div.print_timestamp, div.print_text {
+	display: table-cell;
+	padding: 0px var(--margin) 0px var(--margin);
+}
+
+div.print_error {
+	background-color : var(--errorcolor);
+	white-space: nowrap;
+}
+div.print_warning {
+	background-color : var(--warningcolor);
+	white-space: nowrap;
+}
+div.print_message {
+	background-color : var(--messagecolor);
+	white-space: nowrap;
+}
+div.print_debug {
+	background-color : var(--messagecolor);
+	white-space: nowrap;
+}
+
+div.print_status {
+    position: absolute;
+    overflow: hidden;
+    z-index: 1000;
+    width: 100%;
+    height: 0%;
+}
+
+div.print_status_animation {
+    animation-duration: 10s;
+    animation-name: print_status;
+}
+
+@keyframes print_status {
+    0%   { height : 0px;  }
+    20%  { height : 28px; }
+    80%  { height : 28px; }
+    100% { height : 0px;  }
+}
+
+table.print_status {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table.print_status td div {
+	padding: 2px 12px 4px 12px;
+    background: var(--warningcolor);
+    
+    border: 2px solid var(--bordercolor);
+    border-radius:         var(--borderradius);
+    border-top: 0px;
+}

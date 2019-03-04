@@ -1,0 +1,330 @@
+.inputsingle #editorbuttons {
+	margin-top: var(--qmargin);
+}
+
+.inputsingle #editor {
+	margin-bottom: var(--qmargin);
+}
+
+.MneEditorFrame {
+	border: var(--border);
+}
+
+body[aria-view-mode="mobile"] .MneEditorFrame {
+	min-height: 500px;
+}
+
+
+/************/
+/* Buttons  */
+/************/
+
+.MneEditorButtons {
+	border: var(--border);
+	border-bottom-width: 0px;
+	padding: var(--margin);
+}
+
+body[aria-view-mode="mobile"] .MneEditorButtons div.input-wrapper {
+	display: inline;
+}
+
+.MneEditorButtons.modifyok {
+	background-color: unset;
+	border-color: var(--modifyokbackgroundcolor);
+	border-width: var(--dmargin);
+}
+
+.MneEditorButton {
+	position: relative;
+	height: 20px;
+	width: 20px;
+	cursor: default;
+	margin-right: var(--margin);
+    margin-left: var(--margin);
+}
+.MneEditorButtonPressed {
+	position: relative;
+	border: 1px inset;
+	height: 20px;
+	width: 20px;
+	cursor: default;
+	margin-right: var(--margin);
+    margin-left: var(--margin);
+}
+
+.MneEditorButton::before, .MneEditorButtonPressed::before {
+    position: absolute;
+    font-family: SymbolFont1;
+    line-height: 20px;
+    text-align: center;
+    left: 0px;
+    top: 0px;
+    width: 20px;
+    height: 20px;
+    color: var(--lightcolor1);
+}
+
+.MneEditorButton::after, .MneEditorButtonPressed::after  {
+	position: absolute;
+	font-family: SymbolFont1;
+	line-height: 10px;
+	text-align: center;
+	right: 0px;
+	top: 0px;
+	width: 10px;
+	height: 10px;
+	color: red;
+	font-size: 12px;
+}
+
+.MneEditorButton.italic::before {
+    content: '\f033';
+}
+
+.MneEditorButton.bold::before {
+    content: '\f032';
+}
+
+.MneEditorButton.raggedleft::before {
+	content: '\f036'
+}
+
+.MneEditorButton.raggedright::before {
+	content: '\f038'
+}
+
+.MneEditorButton.center::before {
+	content: '\f037'
+}
+
+.MneEditorButton.save::before {
+    content: '\f0c7';
+}
+
+.MneEditorButton.undo::before {
+    content: '\f0e2';
+}
+
+.MneEditorButton.redo::before {
+    content: '\f01e';
+}
+
+.MneEditorButton.item::before {
+    content: '\f0ca';
+}
+
+.MneEditorButton.enum::before {
+    content: '\f0cb';
+}
+
+.MneEditorButton.picture::before {
+    content: '\f03e';
+}
+
+.MneEditorButton.anker::before {
+    content: '\f0c1';
+}
+
+.MneEditorButton.close::before {
+    content: '\f00d';
+}
+
+.MneEditorButton.file::before {
+    content: '\f15b';
+}
+
+.MneEditorButton.cut::before {
+    content: '\f0c4';
+}
+
+.MneEditorButton.copy::before {
+    content: '\f0c5';
+}
+
+.MneEditorButton.paste::before {
+    content: '\f0ea';
+}
+
+.MneEditorButton.folder::before {
+    content: '\f07c';
+}
+
+.MneEditorButton.table::before {
+    content: '\f0ce';
+}
+
+.MneEditorButton.table_delete::before {
+    content: '\f0ce';
+}
+
+.MneEditorButton.table_delete::after {
+    content: '\f00d';
+}
+
+.MneEditorButton.table_insert_col_before::before {
+    content: '\f0db';
+}
+.MneEditorButton.table_insert_col_before::after {
+    content: '\f060';
+    color: green;
+}
+
+.MneEditorButton.table_insert_col_behind::before {
+    content: '\f0db';
+}
+
+.MneEditorButton.table_insert_col_behind::after {
+    content: '\f060';
+    color: green;
+    top: unset;
+    bottom: 2px;
+}
+
+.MneEditorButton.table_delete_col::before {
+    content: '\f0db';
+}
+
+.MneEditorButton.table_delete_col::after {
+    content: '\f00d';
+}
+
+.MneEditorButton.table_insert_row_before::before {
+    content: '\f0c9';
+}
+
+.MneEditorButton.table_insert_row_before::after {
+    content: '\f060';
+    color: green;
+}
+
+.MneEditorButton.table_insert_row_behind::before {
+    content: '\f0c9';
+}
+
+.MneEditorButton.table_insert_row_behind::after {
+    content: '\f060';
+    color: green;
+    top: unset;
+    bottom: 2px;
+}
+
+.MneEditorButton.table_delete_row::before {
+    content: '\f0c9';
+}
+.MneEditorButton.table_delete_row::after {
+    content: '\f00d';
+}
+
+.MneEditorButtonHint {
+    background: var(--background);
+    padding: var(--margin);
+    color: var(--lightcolor1);
+    box-shadow: var(--boxshadow);
+}
+
+.MneEditorButtonSep {
+	margin-left: var(--margin);
+	margin-right: var(--margin);
+	height: var(--font_normal);
+	border: var(--border);
+	border-color: var(--lightcolor1);
+	
+	cursor: default;
+}
+/***********************/
+/* Buttons Attribute   */
+/***********************/
+select.MneEditorAttr {
+	height: 18px;
+	margin-top: 0px;
+	padding: 0px;
+}
+span.MneEditorAttr {
+	height: 20px;
+	line-height: 22px;
+}
+input.MneEditorAttr {
+	vertical-align: top;
+	height: 14px;
+	padding: 2px;
+	margin: 0px;
+}
+.MneEditorButtons input[type=button] {
+	vertical-align: top;
+	border: 1px outset;
+	height: 18px;
+	margin-top: 1px;
+	padding: 0px;
+	margin-right: 2px;
+	margin-left: 2px;
+}
+
+/************/
+/* Popup    */
+/************/
+
+.MneEditorPopup {
+	position: absolute;
+	visibility: hidden;
+	border: 1px solid #999999;
+	height: 300px;
+	width: 300px;
+}
+.MneEditorPopupHeader {
+	position: absolute;
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	border-bottom: 1px solid #999999;
+	background-color: #eeeeee;
+}
+.MneEditorPopupContent {
+	position: absolute;
+	overflow: auto;
+	cursor: pointer;
+	left: 0px;
+	top: 21px;
+	right: 0px;
+	bottom: 0px;
+	overflow: auto;
+}
+.MneEditorPopupResize {
+	position: absolute;
+	overflow: auto;
+	cursor: se-resize;
+	right: -1px;
+	bottom: -1px;
+	height: 15px;
+	width: 15px;
+	overflow: auto;
+	border-right: 3px ridge #999999;
+	border-bottom:3px ridge #999999;
+}
+.MneEditorPopupDir {
+	background-image: url(../../images/mne_editor/folder.gif);
+	padding-left: 20px;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+}
+.MneEditorPopupFile {
+	background-image: url(../../images/mne_editor/file.gif);
+	padding-left: 20px;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+}
+img.MnePopupHeaderButton {
+	cursor: pointer;
+    border: 1px solid #333333;
+    float: right;
+	padding: 1px;
+	margin: 3px;
+}
+
+/************/
+/* Anker   */
+/************/
+a.MneHrefEmpty {
+	background-color: #CCCCCC;
+}
+

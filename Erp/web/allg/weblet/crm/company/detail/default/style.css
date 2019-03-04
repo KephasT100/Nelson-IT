@@ -1,0 +1,11 @@
+.nocompanyown .inputsingle:not(.owncompanyselector) input,
+.nocompanyown .inputsingle:not(.owncompanyselector) button,
+.nocompanyown .inputsingle:not(.owncompanyselector) select,
+.nocompanyown .inputsingle:not(.owncompanyselector) *:after {
+	display: none;
+}
+
+.nocompanyown .inputsingle:not(.owncompanyselector) span {
+	color: var(--background);
+}
+ 

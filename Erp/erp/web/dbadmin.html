@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>ERP - Nelson technische Informatik</title>
+<link rel="shortcut icon" href="/main/login/favicon.ico" type="image/x-icon">
+
+<script type="text/javascript" src="/extern/js/bowser/bowser.js"></script>
+<script type="text/javascript" src="js/basic/mne_adocevents.js"></script>
+<script type="text/javascript" src="js/basic/mne_amisc.js"></script>
+<script type="text/javascript" src="js/ajax/mne_ajax.js"></script>
+
+<script type="text/javascript" src="js/ajax/mne_aweblet.js"></script>
+<script type="text/javascript" src="js/ajax/mne_awebletdb.js"></script>
+
+<script type="text/JavaScript" charset="utf-8">
+  mneDocevents.addInterest('winload' , { winload : function(evt) {
+
+  var weblet = new MneAjaxWeblet(window, window.document.body.firstChild);
+  weblet.initmain('dbadmin', 'main', 'treemenu', false);
+  
+  }
+  
+});
+</script>
+
+<body><div id="mainwindow"></div></body>
+</html>

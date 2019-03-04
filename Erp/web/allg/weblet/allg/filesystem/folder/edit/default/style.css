@@ -1,0 +1,17 @@
+button[value="Ordner Hinzufügen"] {
+	min-width: 10em;
+	white-space: nowrap;
+}
+
+button[value="Datei Hinzufügen"] {
+	min-width: 11em;
+	white-space: nowrap;
+}
+
+div.filesytemfileaddiframe {
+	border: 1px solid #808080;
+	margin: 4px;
+}
+iframe.filesytemfileaddiframe {
+	border: 0px solid #808080;
+}

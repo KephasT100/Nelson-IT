@@ -1,0 +1,287 @@
+.slideradd {
+	visibility: hidden;
+}
+
+.sliderclose > div {
+	animation-duration: 0.5s;
+	overflow: hidden;
+}
+
+.sliderhide > div.sliderframe1, .sliderhide > div.slider {
+	display: none;
+}
+
+.slidershow > div {
+	animation-duration: 0.5s;
+	animation-direction: reverse;
+	overflow: hidden;
+}
+
+.slidericon  {
+    font-family: SymbolFont1;
+    font-size: var(--iconsize);
+    color: var(--lightcolor1);
+   padding-left: var(--dmargin);
+	
+}
+
+.slidericon::before {
+    content: '\f0c9';
+}
+
+.slideraddmovevalueV {
+    visibility: visible;
+    width: 100%;
+    height: 1px;
+    background-color: #888;
+    position: absolute;
+    top: 9px;
+}
+
+.sliderallmoveV {
+    top: 0px;
+    height: 100%; 
+    width: 2px;
+	overflow: hidden;
+	z-index: 100;
+    border-color: #bbb8a9;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+    -moz-user-select: none;
+}
+
+.slidermoveV {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	border-color: #bbb8a9;
+	border-right-width: 2px;
+	border-right-style: ridge;
+	cursor: e-resize;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+    -moz-user-select: none;
+}
+
+.sliderallmoveH {
+    left: 0px; 
+    width: 100%; 
+	border-color: #bbb8a9;
+	overflow: hidden;
+	z-index: 100;
+	height: 2px;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-ms-user-select: none;
+    -moz-user-select: none;
+}
+
+.slidermoveH {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	border-color: #bbb8a9;
+	border-top-width: 2px;
+	border-top-style: ridge;
+	cursor: n-resize;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+    -moz-user-select: none;
+}
+
+div.sliderallmoveH.active {
+    height: 10px;
+	background-color: transparent;
+}
+
+div.sliderallmoveH.active div.slidermove {
+    top: 4px;
+    box-shadow: var(--slider_active_boxshadow);
+}
+
+div.sliderallmoveV.active {
+    width: 10px;
+	background-color: transparent;
+}
+
+div.sliderallmoveV.active div.slidermove {
+    left: 4px;
+    box-shadow: var(--slider_active_boxshadow);
+}
+
+/* ===================================================================================== */
+/* fest mit Rand                                                                         */
+/* ===================================================================================== */
+
+.sliderallfixV {
+    top: 0px;
+    height: 100%; 
+	width: 1px;
+	overflow: hidden;
+	z-index: 100;
+}
+
+.sliderfixV {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #bbb8a9;
+}
+
+.sliderallfixH {
+    left: 0px; 
+    width: 100%; 
+	height: 1px;
+	overflow: hidden;
+	z-index: 100;
+}
+
+.sliderfixH {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #bbb8a9;
+}
+
+/* ===================================================================================== */
+/* unsichtbar                                                                            */
+/* ===================================================================================== */
+
+.sliderallinvisV {
+    top: 0px;
+    height: 100%; 
+	width: 0px;
+	overflow: hidden;
+	z-index: 100;
+}
+
+.sliderinvisV {
+	position: absolute;
+	visibility : hidden;
+}
+
+.sliderallinvisH {
+    left: 0px; 
+    width: 100%; 
+	height: 0px;
+	overflow: hidden;
+	z-index: 100;
+}
+
+.sliderinvisH {
+	position: absolute;
+	visibility: hidden;
+}
+
+/* ===================================================================================== */
+/* Werte eingeben                                                                        */
+/* ===================================================================================== */
+
+
+div.slidervalue {
+    position : relative;
+    height: var(--select_lineheight);
+}
+
+.sliderallmovevalueV {
+   width: var(--qmargin);
+   height: var(--select_lineheight);
+
+    overflow: hidden;
+    z-index: 100;
+	-ms-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+.slidermovevalueV {
+   width: var(--qmargin);
+   height: var(--select_lineheight);
+
+    background-color: #eee;
+    cursor: e-resize;
+
+    border: 1px solid #888;
+    border-radius:20px;
+
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+div.slidervalue div.sliderright {
+}
+
+div.slidervalue div.sliderleft {
+}
+
+div.slidervalue div.sliderframe::before  {
+	content: '';
+	border-bottom: 2px solid var(--bordercolor);
+
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	height: 24px;
+
+	transform: translateY(-50%);
+}
+
+div.slidervalue div.slidervaluevalue {
+	display: inline;
+    position: absolute;
+    line-height: var(--select_lineheight);
+    transform: translateY(-50%);
+}
+
+div.sliderleft div.slidervaluevalue {
+    right: var(--dmargin);
+}
+
+/* ===================================================================================== */
+/* Sliderbereiche                                                                        */
+/* ===================================================================================== */
+
+.sliderframe {
+    background: var(--background);
+}
+
+.sliderleft {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+}
+
+.sliderright {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 100%;
+}
+
+.slidertop {
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	left: 0px;
+}
+
+.sliderbottom {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	bottom: 0px;
+}

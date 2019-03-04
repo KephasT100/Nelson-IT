@@ -1,0 +1,219 @@
+#!/bin/bash
+
+repositoryid=
+content_type="text/plain"
+actdate=`date +"%s"`
+
+while [ $# -gt 0 ] ; do
+  case $1 in
+          -repositoryid ) repositoryid=$2; shift 2;;
+                  -root ) eval root$2=$3;  shift 3;;
+          -content_type ) content_type=$2; shift 2;;
+                    -db ) db=$2;           shift 2;;
+              -fullname ) signature=$2;    shift 2;;
+                 -email ) email=$2;        shift 2;;
+         -countrycarcode) carcode=$2;      shift 2;;
+               -language) language=$2;     shift 2;;
+   -uowncompanyownprefix) prefix=$2;       shift 2;;
+            -uowncompany) owncompany=$2;   shift 2;;
+               -uowncity) owncity=$2;      shift 2;;
+              -uownemail) ownemail=$2;     shift 2;;
+                -uownfax) ownfax=$2;       shift 2;;
+               -uownhttp) ownhttp=$2;      shift 2;;
+        -uownphoneprefix) ownphoneprefix=$2; shift 2;;
+            -uownpostbox) ownpostbox=$2;   shift 2;;
+           -uownpostcode) ownpostcode=$2;  shift 2;;
+             -uownstreet) ownstreet=$2;    shift 2;;
+            -uowntelefon) owntelefon=$2;   shift 2;;
+               -username) username=$2;     shift 2;;
+                      * ) shift 1;;
+  esac
+done
+
+db=`echo $db | sed -e "s/@.*$//"`
+
+if [ "$repositoryid" = "" ]; then
+    echo "Aktenschrank unbekannt";
+    sleep 0
+    exit 2;
+fi
+
+get_data()
+{
+   echo "\\pset format unaligned \\pset footer off \\pset  tuples_only \\\\ $1" | sed -e "s@par1@$2@g" -e "s@par2@$3@g" -e "s@par3@$4@g" -e "s@par4@$5@g" | $psql -h localhost -E  -U mneerprepository $db | sed -e "1,3d"
+}
+
+
+getroot="SELECT t0.root, t0.name, t3.prefix, t1.ordernumber, t1.description \
+         FROM \
+         ( mne_repository.repository t0 LEFT JOIN mne_crm.order t1 ON ( t0.refid = t1.orderid ) \
+           LEFT JOIN mne_crm.person t2 on ( t1.ownerid = t2.personid  ) \
+           LEFT JOIN mne_crm.companyown t3 ON ( t2.refid = t3.companyid )) \
+          WHERE repositoryid = 'par1'";
+get_root()
+{
+    par="$1"
+    root=${par/|*};par="${par#*|}"
+    name=${par/|*};par="${par#*|}"
+    prefix=${par/|*};par="${par#*|}"
+    ordernumber=${par/|*};par="${par#*|}"
+    ordername=${par/|*};par="${par#*|}"
+}
+
+getname="SELECT DISTINCT t4.root AS root, t0.personid AS personid, t1.firstname AS firstname, t1.lastname AS lastname, t1.firstname || E' ' || t1.lastname AS fullname, t1.sex, COALESCE(t3.email,t2.email) AS email, MAX(t5.repdate) != t0.repdate AS mustsend \
+         FROM \
+         ((((((mne_repository.fileinterests t0 LEFT JOIN mne_crm.person t1 ON ( t0.personid = t1.personid) ) \
+         LEFT JOIN mne_crm.persondata t2 ON ( t1.personid = t2.persondataid) )) \
+         LEFT JOIN mne_crm.personemail t3 ON ( t1.personid = t3.personid and t3.emailcategorie = 'repository' )) \
+         LEFT JOIN mne_repository.repository t4 ON ( t0.repositoryid = t4.repositoryid)) \
+         LEFT JOIN mne_repository.filedata t5 ON ( t0.repositoryid = t5.repositoryid AND t0.filename = t5.filename)) \
+         WHERE t0.repositoryid = 'par1'  \
+         GROUP BY t0.fileinterestsid, t0.repositoryid, t4.root, t4.name, t0.personid, t1.firstname, t1.lastname, t1.sex, t3.email, t2.email, t0.repdate, t0.active \
+         HAVING  ( MAX(t5.repdate) != t0.repdate ) = true AND t0.active = true"
+get_name()
+{
+    par=$1
+    root=${par/|*};par=${par#*|}
+    personid=${par/|*};par=${par#*|}
+    firstname=${par/|*};par=${par#*|}
+    lastname=${par/|*};par=${par#*|}
+    fullname=${par/|*};par=${par#*|}
+    sex=${par/|*};par=${par#*|}
+    email=${par/|*};par=${par#*|}
+    mustsend=${par/|*};par=${par#*|}
+}
+
+getfile="SELECT DISTINCT tt0.fileinterestsid, tt1.name, replace(tt1.filename,'''','@@@@@@@@'), tt2.repnote, tt3.rank \
+         FROM mne_repository.fileinterests tt0 \
+             LEFT JOIN ( SELECT DISTINCT t0.repositoryid AS repositoryid, t1.name AS name, t0.filename AS filename, t1.name || '/' || t0.filename AS fullname, MAX(t0.repdate) AS repdate \
+                                     FROM  mne_repository.filedata t0 \
+                                       INNER JOIN mne_repository.repository t1 ON ( t0.repositoryid = t1.repositoryid ) \
+                                     GROUP BY  t0.repositoryid, t1.name, t0.filename )  tt1 ON ( tt0.filename = tt1.filename AND tt0.repositoryid = tt1.repositoryid ) \
+             LEFT JOIN mne_repository.filedata tt2 ON ( tt0.filename = tt1.filename AND tt0.repositoryid = tt1.repositoryid AND tt1.repdate = tt2.repdate ) \
+             LEFT JOIN ( SELECT repositoryid, filename, repdate, COALESCE(shortrev, mne_repository.revisionnumber(CAST( rank() OVER ( PARTITION BY repositoryid, filename ORDER BY repdate) AS INT4)-1), CAST( (rank() OVER ( PARTITION BY repositoryid,filename ORDER BY repdate)-1) AS VARCHAR )) AS rank FROM mne_repository.filedata ) tt3 ON  ( tt3.filename = tt1.filename AND tt3.repositoryid = tt1.repositoryid AND tt3.repdate = tt1.repdate ) \
+             WHERE tt0.repositoryid = 'par1' AND tt0.personid = 'par2' AND tt0.repdate != tt1.repdate AND tt0.active = true"
+get_file()
+{
+    par=$1
+    fileinterestsid=${par/|*}; par=${par#*|}
+    name=${par/|*};            par=${par#*|}
+    filename=${par/|*};        par=${par#*|}
+    repnote=${par/|*};         par=${par#*|}
+    revision=${par/|*};        par=${par#*|}
+}
+
+updatesend="UPDATE mne_repository.fileinterests t0 SET lastsend=par1 WHERE fileinterestsid = 'par2';"
+updatelinkid="DELETE FROM mne_repository.mail WHERE repositoryid='par2' AND personid='par3'; \
+              INSERT INTO mne_repository.mail ( mailid, repositoryid, personid, linkid, createuser, modifyuser, createdate, modifydate ) \
+                                       VALUES ( 'par1', 'par2', 'par3', 'par4', session_user, session_user, mne_catalog.acttime(), mne_catalog.acttime() );"
+
+mail_it() 
+{
+    subject=`mksubject`
+    
+    if [ "$from" = "" ]; then
+        echo "$2" | mailx -s "$subject" -a "Content-Type: text/html; charset=UTF-8;" $1;
+    else
+        echo "$2" | mailx -s "$subject" -a "Content-Type: text/html; charset=UTF-8;" -a "$from" $1;
+    fi
+    
+    if [ ! "$?" = "0" ]; then
+      result=1
+    fi
+}
+
+get_root "`get_data "$getroot" $repositoryid`"
+
+if [ -f $mailtempl.$prefix.html ]; then
+    mailtempl=$mailtempl$prefix
+fi
+
+get_data "$getname" $repositoryid | \
+{
+  result=0;
+  while read line;
+    do
+       get_name "$line"
+       if [ "$email" = "" ]; then
+         echo keine Mailadresse für $fullname
+         result=1
+       else
+         if [ $sex = 0 ]; then
+            salutation="Sehr geehrte Frau $lastname";
+         else
+            salutation="Sehr geehrter Herr $lastname";
+         fi
+
+         mailid=`get_data "SELECT mne_catalog.mk_id()"`;
+         linkid=$mailid$(dd if=/dev/urandom bs=2048 count=1 2>/dev/null |tr -dc "a-zA-Z0-9"|fold -w 128 |head -1)
+         
+         get_data "$updatelinkid" $mailid $repositoryid $personid $linkid >/dev/null 2>&1
+         
+         link="$url/db/utils/trust/repfiles.zip?id=$linkid"
+         files=`get_data "$getfile" $repositoryid $personid | \
+           while read data;
+             do
+               get_file "$data"
+               echo "<tr><td>$filename</td><td>$revision</td><td>$repnote</td></tr>"
+           done`
+         text=`awk ' /####files####/          { gsub(/####files####/,files);           }
+                     /####link####/           { gsub(/####link####/,link);             }
+                     /####salutation####/     { gsub(/####salutation####/,salutation); }
+                     /####email####/          { gsub(/####email####/,email);           }
+                     /####signature####/      { gsub(/####signature####/,signature);   }
+                     /####owncompany####/     { gsub(/####owncompany####/,owncompany);   }
+                     /####ownemail####/       { gsub(/####ownemail####/,ownemail);   }
+                     /####ownfax####/         { gsub(/####ownfax####/,ownfax);   }
+                     /####ownhttp####/        { gsub(/####ownhttp####/,ownhttp);   }
+                     /####ownphoneprefix####/ { gsub(/####ownphoneprefix####/,ownphoneprefix);   }
+                     /####ownpostbox####/     { gsub(/####ownpostbox####/,ownpostbox);   }
+                     /####ownpostcode####/    { gsub(/####ownpostcode####/,ownpostcode);   }
+                     /####ownstreet####/      { gsub(/####ownstreet####/,ownstreet);   }
+                     /####owntelefon####/     { gsub(/####owntelefon####/,signature);   }
+                     /####owncity####/        { gsub(/####owncity####/,owncity);   }
+                                              { print $0 }' \
+                     \
+                     "files=$files"\
+                     "email=$email"\
+                     "link=$link"\
+                     "name=$name"\
+                     "salutation=$salutation"\
+                     "signature=$signature"\
+                     "owncompany=$owncompany"\
+                     "owncity=$owncity"\
+                     "ownemail=$ownemail"\
+                     "ownfax=$ownfax"\
+                     "ownhttp=$ownhttp" \
+                     "ownphoneprefix=$ownphoneprefix" \
+                     "ownpostbox=$ownpostbox" \
+                     "ownpostcode=$ownpostcode" \
+                     "ownstreet=$ownstreet" \
+                     "owntelefon=$owntelefon" $mailtempl.html`
+         text=`echo $text | sed -e "s/@@@@@@@@/'/g"`
+
+         mail_it $email "$text"
+
+         if [ $? = 0 ]; then
+           get_data "$getfile" $repositoryid $personid | \
+             while read data;
+               do
+                 get_file "$data"
+                 get_data "$updatesend" $actdate $fileinterestsid >/dev/null 2>&1
+             done
+         fi
+
+       fi
+    done
+    sleep 0
+    exit $result
+}
+
+result=$?
+if [ "$result" = "0" ]; then
+    echo '<?xml version="1.0" encoding="utf-8"?><result><body>ok</body>'
+else
+    echo '<?xml version="1.0" encoding="utf-8"?><result><body>notok</body>'
+fi
+
+sleep 0
+exit $result

@@ -1,0 +1,431 @@
+
+/* Tag Definitionen */
+
+* {
+	margin: 0px;
+	padding: 0px;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+	width:100%;
+	height:100%;
+	margin: 0px;
+	padding: 0px;
+	
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	position: relative;
+	width:100%;
+	height:100%;
+
+	background-color: var(--background);
+	color: var(--color);
+
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+
+	font-family: var(--font-family);
+	font-size: var(--font_normal);
+}
+
+input, button {
+	padding-top: var(--margin);
+	padding-bottom: var(--margin);
+	padding-left: var(--dmargin);
+	padding-right: var(--dmargin);
+
+	font-family: var(--font-family);
+	font-size: var(--font_normal);
+
+	color: var(--inputcolor);
+	
+	height: var(--select_lineheight);
+	
+	-webkit-appearance: none;
+}
+
+div.container {
+	position: relative;
+}
+
+input::-moz-focus-inner {
+    border : none;
+}
+
+input:focus {
+    outline: none;
+}
+
+input[type=text].rdonly {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+input.color, input[type="text"].color {
+	background-image: none;
+	box-shadow: 0px 0px 4px 1px transparent;
+	width: var(--select_lineheight);
+}
+
+div.input-wrapper {
+	display: inline-block;
+	margin-left: var(--margin);
+	margin-right: var(--margin);
+}
+
+div.selectlisti::after, span.selectlisti::after {
+	content: '\f002';
+	font-family: SymbolFont1;
+	color: var(--lightcolor1);
+	margin-left: var(--dmargin);
+	cursor: pointer;
+	line-height: 0px;
+}
+
+div.selectlists::after, span.selectlists::after {
+	content: '\f07c';
+	font-family: SymbolFont1;
+	color: var(--lightcolor1);
+	margin-left: var(--dmargin);
+	cursor: pointer;
+	line-height: 0px;
+}
+
+input[type=text], input[type=password], div.ehtml {
+    border-radius: var(--borderradius);
+	box-shadow: var(--boxshadow);
+	border: 1px;
+	-webkit-appearance: none;
+}
+
+input[type="text"][disabled] {
+    color : var(--color);
+    background-color: var(--background);
+}
+input[type="text"][disabled].disablehide {
+    color : transparent;
+    background-color: transparent;
+}
+input[type="text"][readonly] {
+    background-color: var(--rdonlybackground);
+    color : var(--rdonlycolor);
+}
+
+input[type="text"][readonly].border {
+    border-width : 1px;
+}
+
+input[type="file"] {
+	height: initial;
+}
+
+input[type="checkbox"] {
+    margin : 4px;
+}
+
+div.checkbox-wrapper input[type="checkbox"] {
+    display : none !important;
+    margin: 0px !important;
+}
+
+div.checkbox-wrapper {
+	position: relative;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	border-radius: var(--borderradius);
+	box-shadow: var(--boxshadow);
+	margin-left: var(--margin);
+    margin-right: var(--margin);
+    line-height: 16px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+div.checkbox-wrapper.checkbox-disabled {
+	box-shadow: none;
+}
+
+div.checkbox-wrapper label {
+	cursor: pointer;
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	width: 10px;
+	height: 10px;
+
+	border-radius: 10px;
+}
+
+div.checkbox-wrapper label:after {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	
+	border-radius: 10px;
+    border: var(--checkbox_border);
+    box-sizing: border-box;
+
+	content: '';
+}
+
+div.checkbox-wrapper:hover label::after {
+    border-color: var(--darkcolor1);
+}
+
+div.checkbox-wrapper input[type=checkbox]:checked + label:after {
+    background: var(--darkcolor1)
+}
+
+div.checkbox-wrapper:hover input[type=checkbox]:checked + label:after {
+    border-color: var(--lightcolor1)
+}
+
+div.ele-wrapper {
+	display: inline-block;
+}
+
+input[type=radio] {
+	vertical-align: middle;
+}
+
+
+input[type="button"], button, div.button {
+    display:inline-block;
+
+	box-shadow: var(--button_boxshadow);
+    border-radius:var(--borderradius);
+    border:var(--button_border);
+
+    background: var(--button_background);
+    color:var(--color);
+
+    text-indent:0;
+    text-decoration:none;
+    text-align:center;
+}
+
+div.button  {
+	font-family: SymbolFont1;
+
+	position: relative;
+	width: var(--iconsize);
+	line-height: var(--iconsize);
+	color: var(--lightcolor1);
+}
+
+input[type="button"]:hover, button:hover {
+    color: var(--darkcolor1);
+}
+
+input[type="button"]:active, button:active, div.button:active {
+    background: var(--button_background_active);
+    border: var(--button_border_active);
+    box-shadow: var(--button_boxshadow_active);
+}
+
+button[disabled], input[type="button"][disabled]
+{
+	color: #B0B0B0;
+} 
+
+input[type="button"].upload {
+	    color: #000;
+    font-size: 18px;
+    padding: 0 4px;
+}
+
+div.button.docprev:after {
+	content: '\f053';
+}
+
+div.button.docnext:after {
+	content: '\f054';
+}
+
+div.button.fileadd:after {
+	content: '\f067';
+}
+div.button.filedel:after {
+	content: '\f1f8';
+}
+div.button.rotateleft:after {
+	content: '\f3e5';
+}
+div.button.rotateright:after {
+	content: '\f064';
+}
+div.button.reloadit:after {
+    content: '\f021';
+}
+div.button.fullscreen:after {
+    content: '\f2d0';
+}
+div.button.fullscreen_active::after {
+    content: '\f2d2';
+}
+div.button.dirselect::after {
+    content: '\f07c';
+}
+div.button.dirlist::after {
+    content: '\f0c9';
+}
+div.button.dirsymbol::after {
+    content: '\f009';
+}
+
+input[type=text].input1, textarea.input1, td.input1 select, td.input1 > div.ehtml, td.input1 > div.shtml, tbody > tr > td.input1 > span {
+    width: 1em;
+}
+input[type=text].input2, textarea.input2, td.input2 select, td.input2 > div.ehtml, td.input2 > div.shtml, tbody > tr > td.input2 > span {
+    width: 2em;
+}
+input[type=text].input3, textarea.input3, td.input3 select, td.input3 > div.ehtml, td.input3 > div.shtml, tbody > tr > td.input3 > span {
+    width: 3em;
+}
+input[type=text].input4, textarea.input4, td.input4 select, td.input4 > div.ehtml, td.input4 > div.shtml, tbody > tr > td.input4 > span {
+    width: 4em;
+}
+input[type=text].input5, textarea.input5, td.input5 select, td.input5 > div.ehtml, td.input5 > div.shtml, tbody > tr > td.input5 > span {
+    width: 5em;
+}
+input[type=text].input6, textarea.input6, td.input6 select, td.input6 > div.ehtml, td.input6 > div.shtml, tbody > tr > td.input6 > span {
+    width: 6em;
+}
+input[type=text].input7, textarea.input7, td.input7 select, td.input7 > div.ehtml, td.input7 > div.shtml, tbody > tr > td.input7 > span {
+    width: 7em;
+}
+input[type=text].input8, textarea.input8, td.input8 select, td.input8 > div.ehtml, td.input8 > div.shtml, tbody > tr > td.input8 > span {
+    width: 8em;
+}
+input[type=text].input9, textarea.input9, td.input9 select, td.input9 > div.ehtml, td.input9 > div.shtml, tbody > tr > td.input9 > span {
+    width: 9em;
+}
+input[type=text].input10, textarea.input10, td.input10 select, td.input10 > div.ehtml, td.input10 > div.shtml, tbody > tr > td.input10 > span {
+    width: 10em;
+}
+input[type=text].input15, textarea.input15, td.input15 select, td.input15 > div.ehtml, td.input15 > div.shtml, tbody > tr > td.input15 > span {
+    width: 15em;
+}
+input[type=text].input20, textarea.input20, td.input20 select, td.input20 > div.ehtml, td.input20 > div.shtml, tbody > tr > td.input20 > span {
+    width: 20em;
+}
+input[type=text].input30, textarea.input30, td.input30 select, td.input30 > div.ehtml, td.input30 > div.shtml, tbody > tr > td.input30 > span {
+    width: 30em;
+}
+
+tbody > tr > td[class*="input"] > span {
+	display: inline-block;
+}
+	
+div.ehtml {
+    max-height: 10ex;
+    overflow : auto;
+}
+	
+select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+     
+    border: none;
+    border-radius: var(--borderradius);
+    
+	background-color: var(--background);
+	color: var(--color);
+    box-shadow: var(--boxshadow);
+    
+    font-size: var(--font_normal);
+    font-family: var(--font-family);
+    line-height: var(--select_lineheight);
+    
+    width: 100%;
+    padding-left: 4px;
+    padding-right: var(--select_padright);
+}
+
+td select {
+	width: auto;
+}
+
+div.select-wrapper {
+    display: inline-block;
+    position: relative;
+	margin-left: var(--margin);
+    margin-right: var(--margin);
+    line-height: var(--select_lineheight);
+}
+
+div.select-wrapper:after {
+      pointer-events: none;
+      content: "\25bc";
+      position: absolute;
+      right: 4px;
+      color: var(--color);
+}
+
+option {
+	padding-right: 8px;
+}
+
+ul {
+	margin-left: 32px;
+	margin-top:  8px;
+	margin-bottom: 8px;
+}
+textarea {
+	font-family: var(--font-family);
+	font-size: var(--font_normal);
+	border: var(--border);
+	background: var(--lightcolor2);
+    padding: 2px;
+}
+
+textarea.single {
+    height: var(--select_lineheight);
+    vertical-align: middle;
+}
+
+textarea.height1 {
+    height: 3ex;
+}
+
+textarea.multicol {
+	min-height: 24px;
+}
+
+textarea.dblclick {
+    border-right-width: 3px;
+    overflow : hidden;
+    resize: none;
+}
+
+div.hidden {
+	position : relative;
+	width: 0px;
+    height: 0px;
+    overflow : hidden;
+    visibility : hidden;
+}
+
+span.disabled {
+	color : #808080;
+}
+
+.header span {
+    font-weight: bold;
+    padding-left: var(--dmargin);
+}
+
+a {
+    color: var(--darkcolor1);
+    text-decoration: underline;
+}

@@ -1,0 +1,88 @@
+    <table class="border">
+      <thead>
+      <tr>
+        <td colspan="6" class="border paddingt paddingb"><span id="lawLabel"> </span> <select id="yearInput"></select><select id="lawInput"></select> </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="borderr padding"><span>&nbsp;</span></td>
+        <td colspan="2" class="borderr padding"><span>&nbsp;</span></td>
+        <td colspan="2" class="padding"><span class="padding">#mne_lang#Leistungsphasen#</span></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="label"><span>#mne_lang#Arbeitsschritte Pauschal#</span></td>
+        <td class="padding borderr"><input type="checkbox" id="pauschal_input"/></td>
+        <td><span>&nbsp;</span></td>
+        <td class="padding borderr"><span>&nbsp;</span></td>
+        <td><span>&nbsp;</span></td>
+        <td class="padding borderr"><span>&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td class="label"><span>#mne_lang#Honorarzone#</span></td>
+        <td class="padding borderr"><select id="zone_input"></select></td>
+        <td class="label"><span>#mne_lang#Erbrachte Leistung#</span></td>
+        <td class="padding borderr"><input type="text" id="leistung_input"  style="width: 7em" /></td>
+        <td class="label"><span id="phasename1Output"> </span></td>
+        <td class="padding"><input type="text" id="value1Input"  style="width: 3em"/> % <span id="value1r_output"></span></td>
+      </tr>
+      <tr>
+        <td class="label"><span>#mne_lang#Honoraransatz#</span></td>
+        <td class="padding borderr"><select id="ansatz_input"></select></td>
+        <td colspan=2 class="borderr">&nbsp;</td>
+        <td class="label"><span id="phasename2Output"> </span></td>
+        <td class="padding"><input type="text" id="value2Input"  style="width: 3em"/> % <span id="value2r_output"></span></td>
+      </tr>
+      <tr>
+        <td class="label"><span>#mne_lang#Anrechenbare Kosten#</span></td>
+        <td class="padding borderr"><input type="text" id="kosten_input"  style="width: 7em"/></td>
+        <td colspan=2 class="borderr">&nbsp;</td>
+        <td class="label"><span id="phasename3Output"> </span></td>
+        <td class="padding"><input type="text" id="value3Input"  style="width: 3em"/> % <span id="value3r_output"></span></td>
+      </tr>
+      <tr>
+        <td class="label"><span>#mne_lang#Zuschlag#</span></td>
+        <td class="padding borderr"><input type="text" id="zuschlag_input"  style="width: 3em"/> % </td>
+        <td class="label"><span>#mne_lang#Zuschlag#</span></td>
+        <td class="padding borderr"><input type="text" id="zuschlagr_input"  style="width: 7em"/></td>
+        <td class="label"><span id="phasename4Output"> </span></td>
+        <td class="padding"><input type="text" id="value4Input"  style="width: 3em"/> % <span id="value4r_output"></span></td>
+      </tr>
+      <tr>
+        <td class="label"><span>#mne_lang#Zeithonorar#</span></td>
+        <td class="padding borderr"><input type="text" id="zeit_input"  style="width: 7em"/> </td>
+        <td colspan=2 class="borderr">&nbsp;</td>
+        <td class="label"><span id="phasename5Output"> </span></td>
+        <td class="padding"><input type="text" id="value5Input"  style="width: 3em"/> % <span id="value5r_output"></span></td>
+      </tr>
+      <tr>
+        <td class="label"><span>#mne_lang#Besondere Leistungen#</span></td>
+        <td class="padding borderr"><input type="text" id="besonders_input"  style="width: 7em"/> </td>
+        <td colspan=2 class="borderr">&nbsp;</td>
+        <td class="label"><span id="phasename6Output"> </span></td>
+        <td class="padding"><input type="text" id="value6Input"  style="width: 3em"/> % <span id="value6r_output"></span></td>
+      </tr>
+      <tr>
+        <td class="label"><span>#mne_lang#Zusätzliche Leistungen#</span></td>
+        <td class="padding borderr "><input type="text" id="zusatz_input"  style="width: 7em"/> </td>
+        <td colspan=2 class="borderr">&nbsp;</td>
+        <td class="label"><span id="phasename7Output"> </span></td>
+        <td class="padding"><input type="text" id="value7Input"  style="width: 3em"/> % <span id="value7r_output"></span></td>
+      </tr>
+      <tr>
+        <td class="label "><span>#mne_lang#Nebenkosten#</span></td>
+        <td class="padding borderr "><input type="text" id="nebenkosten_input"  style="width: 3em"/> % </td>
+        <td class="label "><span>#mne_lang#Nebenkosten#</span></td>
+        <td class="padding borderr "><input type="text" id="nebenkostenr_input"  style="width: 7em"/> </td>
+        <td class="label"><span id="phasename8Output"> </span></td>
+        <td class="padding"><input type="text" id="value8Input"  style="width: 3em"/> % <span id="value8r_output"></span></td>
+      </tr>
+      <tr>
+        <td colspan=2 class="borderr">&nbsp;</td>
+        <td class="label "><span>#mne_lang#Gesammt#</span></td>
+        <td class="padding borderr "><input type="text" id="gesammt_input"  style="width: 7em"/> </td>
+        <td class="label"><span id="phasename9Output"> </span></td>
+        <td class="padding"><input type="text" id="value9Input"  style="width: 3em"/> % <span id="value9r_output"></span></td>
+      </tr>
+      </tbody>
+    </table>

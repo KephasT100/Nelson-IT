@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+<head>
+<base href="#mne_base#">
+<script type="text/javascript" src="/extern/js/bowser/bowser.js"></script>
+<script type="text/javascript" src="js/basic/mne_adocevents.js"></script>
+<script type="text/javascript" src="js/basic/mne_amisc.js"></script>
+<script type="text/javascript" src="js/ajax/mne_ajax.js"></script>
+
+<script type="text/JavaScript" charset="utf-8">
+  mneDocevents.addInterest('winload' , { winload : function(evt) {
+
+    {
+      var timeout = function() { try { window.frameElement.weblet.sendready.call(window.frameElement.weblet); } catch(e) { alert(e.message); } }
+      window.setTimeout(timeout, 10);
+    }
+  }
+});
+</script>
+<style>
+body, html {
+    margin: 0px;
+    padding: 0px;
+}
+</style>
+
+</head>
+<body>
+  <form id="fileimport" action="/utils/file.txt" method="post" enctype="multipart/form-data">
+    <input name="script" id="script" type="hidden" value="window.onload = function() {  try { window.frameElement.weblet.dataready.call(window.frameElement.weblet); } catch(e) { alert(e.message); }; }">
+    <input name="data" id="data" style="padding: 4px;" type="file" size="50" maxlength="100000">
+  </form>
+</body>
+</html>

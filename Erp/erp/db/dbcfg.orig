@@ -1,0 +1,27 @@
+origdb=erpdborig
+orighost=127.0.156.1
+origport=5432
+origuser=admindb
+origpass='geheim'
+
+checkdb=erpdb
+checkhost=127.0.156.1
+checkport=5432
+checkuser=admindb
+checkpass='geheim'
+
+IFS=$'\012'
+
+get_data()
+{
+   export PGPASSWORD=$origpass
+   echo "\\pset format unaligned \\pset footer off \\pset  tuples_only \\\\ $1" | sed -e "s@par1@$2@" -e "s@par2@$3@" -e "s@par3@$4@" | psql -E -h $orighost -p $origport -U $origuser $origdb | sed -e "1,3d"
+}
+
+get_checkdata()
+{
+   export PGPASSWORD=$checkpass
+   echo "\\pset format unaligned \\pset footer off \\pset  tuples_only \\\\ $1" | sed -e "s@par1@$2@" -e "s@par2@$3@" -e "s@par3@$4@" | psql -E -h $checkhost -p$checkport -U $checkuser $checkdb | sed -e "1,3d"
+}
+
+cus_schemas=

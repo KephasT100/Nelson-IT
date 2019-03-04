@@ -1,0 +1,30 @@
+#!/bin/bash
+
+url="http://`hostname`:8024"
+mailtempl="exec/allg/shell/repository/repmail"
+frommail="erpteam@localhost"
+signature="Ihr Erp Team"
+db=erpdb
+psql=psql
+md5sum=md5sum
+sendmail=/usr/sbin/sendmail
+
+uname=`uname`
+if [ ! "$uname" = "Darwin" ]; then
+    uname=`uname -o`
+else
+    export DYLD_LIBRARY_PATH=/Library/PostgreSQL/9.5/lib
+    md5sum=md5
+fi
+
+if [ "$uname" = "Cygwin" ]; then
+    psql=/usr/bin/psql
+fi
+
+mksubject()
+{
+    YYYYMMDD=`date +%d.%m.%Y`
+    echo "$YYYYMMDD Neue Projektunterlagen: $ordername"
+}
+
+. exec/allg/shell/repository/repmkmail

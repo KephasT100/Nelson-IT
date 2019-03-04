@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+<head>
+<title>ACE in Action</title>
+<script src="/extern/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+
+<style type="text/css" media="screen">
+    #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+
+<script>
+window.onload = function()
+{
+
+    window.editor = ace.edit("editor");
+    window.editor.getSession().setMode("ace/mode/sql");
+    window.editor.getSession().setTabSize(2)
+
+    var name = window.location.href.substring(window.location.href.indexOf('name') + 5);
+    if (typeof window.parent.editarea_parameter == 'undefined' || window.parent.mne_editor_parameter == null  || typeof window.parent.editarea_parameter[name] == 'undefined'|| typeof window.parent.editarea_parameter[name].loadReady != 'function') return;
+    window.parent.editarea_parameter[name].loadReady();
+}
+
+</script>
+
+</head>
+<body>
+<div id="editor"></div>
+</body>
+</html>

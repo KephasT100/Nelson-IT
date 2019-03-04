@@ -1,0 +1,107 @@
+.mne_bold {
+	font-weight: bold;
+}
+
+.mne_italic {
+	font-style: italic;
+}
+
+.mne_fontxxs {
+    font-size: 6px;
+}
+
+.mne_fontxs {
+    font-size: 8px;
+}
+
+.mne_fonts {
+	font-size: 10px;
+}
+
+.mne_fontn {
+	font-size: 12px;
+}
+
+.mne_fontl {
+	font-size: 14px;
+}
+
+.mne_fontxl {
+	font-size: 17px;
+}
+
+.mne_fontxxl {
+	font-size: 20px;
+}
+
+.mne_alignc {
+	text-align: center;
+}
+
+.mne_alignr {
+	text-align: right;
+}
+
+.mne_alignl {
+	text-align: left;
+}
+
+.mne_alignj {
+	text-align: justify;
+}
+
+.mne_valignt {
+	vertical-align: top;
+}
+
+.mne_valignm {
+	vertical-align: middle;
+}
+
+.mne_valignb {
+	vertical-align: bottom;
+}
+
+.mne_floatn {
+	float: none;
+}
+
+.mne_floatl {
+	float: left;
+}
+
+.mne_floatr {
+	float: right;
+}
+
+.mne_floats {
+	clear: both;
+}
+
+table.mne_border {
+	border: 1px solid #000000;
+	border-collapse: collapse;
+}
+
+table.mne_alignc {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table.mne_alignr {
+	margin-left: auto;
+	margin-right: 0px;
+}
+
+table.mne_alignl {
+	margin-left: 0px;
+	margin-right: auto;
+}
+
+td.mne_border {
+	border: 1px solid #000000;
+}
+
+td.mne_padding {
+	padding: 2px;
+}

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+uname=`uname`
+if [ ! "$uname" = "Darwin" ]; then
+    uname=`uname -o`
+else
+    export DYLD_LIBRARY_PATH=/Library/PostgreSQL/8.4/lib
+fi
+
+psql=psql
+if [ "$uname" = "Cygwin" ]; then
+    psql=/usr/bin/psql
+fi
+
+db=erpdb
+linkinvalid="Der Link ist abgelaufen"
+
+. exec/allg/shell/repository/repmkfiles

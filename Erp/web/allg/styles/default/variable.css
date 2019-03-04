@@ -1,0 +1,111 @@
+@font-face {
+  font-family: 'SymbolFont1';
+  src: url('/extern/fonts/fa-solid-900.woff2') format('woff2'), url('/extern/fonts/fa-solid-900.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SymbolFont2';
+  src: url('/extern/fonts/fa-regular-400.woff2') format('woff2'), url('/extern/fonts/fa-regular-400.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+	--font-family: Arial,Helvetica,sans-serif;
+
+	--font_normal: 12px;
+	--font_large: 14px;
+	--font_Large: 17px;
+	--font_huge: 21px;
+	--font_Huge: 25px;
+	
+	--lineheight_normal: 24px;
+    --select_lineheight: 18px;
+
+	--select_padright:   20px;
+	
+	--background: #fdfdfd;
+	--background_transparent: rgba(253,253,253,0.5);
+
+	--color: #404040;
+	--inputcolor: #404040;
+	--inputcolorlight: #a0a0a0;
+	
+	--darkcolor1: #729fcf;
+
+	--lightcolor1: #aaccff;
+	--lightcolor2: #e0f0f0;
+	
+	--errorcolor:  rgba(255,0,0,0.5);
+	--warningcolor: rgba(255,255,0,0.5);
+	--messagecolor: transparent;
+	
+	--modifyokcolor: #000;
+	--modifywrongcolor: #fff;
+	--modifywarningcolor: #000;
+	--modifywaitcolor: #a0a0a0;
+	
+	--modifyokbackgroundcolor: #90ff90;
+	--modifywrongbackgroundcolor: #FF8080;
+	--modifywarningbackgroundcolor: #FFFF00;
+    --modifywaitbackgroundcolor: #f0f0f0;
+	
+    --rdonlycolor: #a0a0a0;
+    --rdonlybackground: transparent;
+	
+	--button_color: #404040;
+	--button_background: #FDFDFD;
+	--button_boxshadow:  #808080 2px 2px 3px;
+	--button_border: 1px solid #e0e0e0;
+
+	--button_background_active: #e0e0e0;
+	--button_boxshadow_active:  #E0e0e0 -1px -1px 2px;
+	--button_border_active: 1px inset #E0E0E0;
+
+	--checkbox_border: 1px solid #c0c0c0;
+
+	--slider_active_boxshadow: 0px 0px 4px 1px #0077cc;
+	
+	--border: 1px solid #808080;
+	--bordercolor: #808080;
+
+	--lightborder: 1px solid #c0c0c0;
+	--lightbordercolor: #c0c0c0;
+
+	--darkborder: 1px solid #404040;
+	--darkbordercolor: #404040;
+
+	--borderradius: 2px;
+	
+	--boxshadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.3);
+	
+	--margin:  2px;
+	--dmargin: 4px;
+	--qmargin: 8px;
+	
+	--nmargin:  -2px;
+	--ndmargin: -4px;
+	--nqmargin: -8px;
+	
+	--iconsize: 24px;
+	--iconpicsize: 20px;
+	--iconfontsize: 16px;
+	
+	--titleheight: 36px;
+}
+
+body[aria-view-mode="tablet"] {
+}
+
+body[aria-view-mode="mobile"] {
+	--font_normal: 16px;
+	--font_large: 19px;
+	--font_Large: 23px;
+	--font_huge: 28px;
+	--font_Huge: 33px;
+	
+	--lineheight_normal: 32px;
+	--select_lineheight: 24px;
+}

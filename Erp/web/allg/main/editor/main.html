@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+<head>
+<title>Nelson technische Informatik - Editor</title>
+<base href="#mne_base#">
+<script type="text/javascript" src="/extern/js/bowser/bowser.js"></script>
+<script type="text/javascript" src="js/basic/mne_adocevents.js"></script>
+<script type="text/javascript" src="js/basic/mne_amisc.js"></script>
+<script type="text/javascript" src="js/ajax/mne_ajax.js"></script>
+<script type="text/javascript" src="js/editor/mne_iframe_editor.js"></script>
+<script type="text/javascript" src="js/editor/mne_editorbuttons.js"></script>
+<script type="text/JavaScript">
+
+  mneDocevents.addInterest('winload',
+  {
+    winload : function(evt)
+    {
+
+      var i;
+      var p;
+      var nav = {
+          firefox : 'firefox',
+      }
+
+      var name = MneMisc.prototype.navigator.name.toLowerCase();
+      if ( nav[name] ) name = nav[name]; else name = 'chrome';
+      
+      if (typeof window.parent.mne_editor_parameter == 'undefined' || window.parent.mne_editor_parameter == null) return;
+
+      window.name = window.location.href.substring(window.location.href.indexOf('name') + 5);
+      var ajax = new MneAjax(window);
+
+      ajax.loadCss('all.css', '/styles/editor');
+      ajax.loadClass('MneIframeEditorNavigator', 'editor/mne_iframe_editor_' + name + '.js')
+
+      p = window.parent.mne_editor_parameter[window.name].editor.plugins;
+      for (i = 0; i < p.length; i++)
+      {
+        if (typeof p[i].basedir == 'undefined' || p[i].basedir == null) p[i].basedir = 'allg/js/editor';
+        ajax.loadClass('MneIframeEditor' + p[i].name, 'editor/' + p[i].name.toLowerCase() + '/object.js');
+      }
+
+      MneIframeEditor.prototype = new MneIframeEditorNavigator;
+      MneIframeEditor.prototype.plugins = window.parent.mne_editor_parameter[window.name].editor.plugins;
+      MneIframeEditor.prototype.have_plugin = function(name)
+      {
+        var i;
+        for (i = 0; i < this.plugins.length; i++)
+          if (this.plugins[i].name.toLowerCase() == name.toLowerCase()) return true;
+        return false;
+      }
+
+      window.parent.mne_editor_parameter[window.name].editor.mne_editor = window.mne_editor = new MneIframeEditor(window, window.parent.mne_editor_parameter[window.name].button, window.parent.mne_editor_parameter[window.name].editor.parameter);
+
+      for (i = 0; i < window.parent.mne_editor_parameter[window.name].editor.plugins.length; i++)
+        eval('MneIframeEditor' + window.parent.mne_editor_parameter[window.name].editor.plugins[i].name + '(window.mne_editor, window.parent.mne_editor_parameter[window.name].editor.plugins[i])')
+
+      window.parent[window.name] = window.mne_editor;
+      window.mne_editor.addEvents();
+      window.mne_editor.clearEditarea();
+      
+      ajax.eleMkElements(window.mne_editor.buttons.frame);
+
+      if (typeof window.parent.mne_editor_parameter[window.name].loadReady == 'function') window.parent.mne_editor_parameter[window.name].loadReady(window.mne_editor);
+
+    }
+  });
+</script>
+<body  tabindex="1" contenteditable="true" spellcheck="true"></body>
+</html>

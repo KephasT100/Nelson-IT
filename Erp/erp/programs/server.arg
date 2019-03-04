@@ -1,0 +1,27 @@
+debug: 0
+project: erp
+
+DbHttpTimeout: 1200
+DbDatabase:    erpdb@localhost
+DbTrustCheckUserip: 127.0.0.1/32
+
+PhpPath: /usr/bin/php-cgi -d include_path=.:/home/manny/projects/web/allg/php:/usr/share/php:/usr/share/pear
+
+EmbedwebHttpMaps:   allg!web/allg:extern!web/extern
+
+EmbedwebHttpSearchPathjs:     /allg/js:/extern/js
+EmbedwebHttpSearchPathstyles: /styles:/allg/styles
+EmbedwebHttpSearchPathimages: /images:/allg/images:/allg/images/mne_editor
+EmbedwebHttpSearchPathweblet: /weblet:/allg/weblet
+EmbedwebHttpSearchPathtempl:  /templ:/allg/templ
+
+EmbedwebHttpServerpath: erp/web
+EmbedwebHttpDataroot:   data
+RepRoot:                tex/report
+DbTranslatePasswd:        IdH88252uGLBSVu7IeXXU6c5VQmdnlWlxxrVOYRn
+MailscanPasswd:           FUSasb8NmwjIoMyhPr3cd9cyYA5cid4ZIXEV0Ztb
+DbRepositoryPasswd:       Y1AKhrgP9lVM3mBlLyM7yQWyVyZK01KVfudkx3GC
+DbSystemPasswd:           KLRfIXrzXI3tSDhhu2uedPKXmZousFIzKXvSxE6X
+
+projectroot:              C:\Program Files\Nelson IT\Erp
+EmbedwebHttpDataroot:     C:\ErpRepository

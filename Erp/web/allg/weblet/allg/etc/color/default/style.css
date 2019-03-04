@@ -1,0 +1,32 @@
+.webletmain.colorselect #webletcontent {
+	border: var(--border);
+	padding: var(--qmargin);
+}
+
+table.colorselect {
+	width: 100%
+}
+	
+table.colorselect td {
+	vertical-align: bottom;
+}
+
+.colorselectoutput {
+	position:relative;
+
+	width:  var(--lineheight_normal);
+    height: var(--lineheight_normal);
+    
+    margin-bottom: var(--qmargin);	
+}
+
+.colorselecttable {
+	white-space: nowrap;
+}
+
+table.colorselectslider {
+	margin-top: var(--qmargin);
+}
+table.colorselectslider td {
+	height: var(--lineheight_normal);
+}

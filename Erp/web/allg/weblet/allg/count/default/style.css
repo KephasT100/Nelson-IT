@@ -1,0 +1,43 @@
+.count_main {
+	position: relative;
+}
+
+#versioniframe {
+	display: none;
+	height: 0px;
+	border: 0px;
+}
+
+#versionframe {
+    display: none;
+	color : red;
+}
+
+#countframe {
+    display: inline-block;
+}
+
+#versionframe.versionshow {
+	display: inline-block;
+}
+
+@keyframes versionhide { 
+	0% { color : red; }
+  100% { color: transparent; }
+}
+
+#versionframe.versionhide {
+	animation: versionhide;
+	animation-duration: 4s;
+}
+
+
+[aria-view-mode="mobile"] #versionframe {
+	display: none;
+}
+
+[aria-view-mode="mobile"] #countframe {
+	left: var(--dmargin);
+	overflow: hidden;
+}
+

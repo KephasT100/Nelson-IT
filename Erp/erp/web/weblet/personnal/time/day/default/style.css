@@ -1,0 +1,17 @@
+.mne_personal_time_day #webletcontent > div {
+	margin-bottom: var(--qmargin);
+}
+
+.mne_personal_time_day #webletcontent > div:first-child div.button, .mne_personal_time_day #webletcontent > div:first-child div.ele-wrapper {
+	vertical-align: text-bottom;
+	transform: translateY(var(--ndmargin));
+}
+
+.mne_personal_time_day #webletcontent #detailTable {
+	display: inline-block;
+}
+
+.mne_personal_time_day #webletcontent #timeTable {
+	display: inline-block;
+	position: relative;
+}

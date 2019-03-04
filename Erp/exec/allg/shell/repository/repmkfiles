@@ -1,0 +1,116 @@
+#!/bin/bash
+
+get_data()
+{
+   echo "\\pset format unaligned \\pset footer off \\pset  tuples_only \\\\ $1" | sed -e "s@par1@$2@g" -e "s@par2@$3@g" -e "s@par3@$4@g" -e "s@par4@$5@g" | $psql -h localhost -E  -U mneerprepository $db | sed -e "1,3d"
+}
+
+getrepperson="SELECT repositoryid, personid FROM mne_repository.mail WHERE linkid = 'par1'";
+get_repperson()
+{
+    par=$1
+    repositoryid=${par/|*}; par=${par#*|}
+    user=${par/|*};     par=${par#*|}
+}
+
+user=
+repositoryid=
+haveid=
+outfile=/tmp/$$.zip
+
+while [ $# -gt 0 ] ; do
+  case $1 in
+     -repositoryid ) repositoryid=$2; shift 2;;
+             -user ) user=$2; shift 2;;
+         -personid ) user=$2; shift 2;;
+         -datapath ) echo $2 $3 >&2; eval root$2=$3; shift 3;;
+               -db ) db=$2;          shift 2;;
+               -id ) id=$2; get_repperson `get_data "$getrepperson" $2`; haveid=1; shift 2;;
+                 * ) shift 1;;
+  esac
+done
+
+db=`echo $db | sed -e "s/@.*$//"`
+
+if [ $haveid = 0 ] && [ "$user" = "" ]; then
+    echo "Benutzer nicht angegeben";
+    sleep 0;
+    exit 1;
+fi
+
+if [ $haveid = 0 ] && [ "$repositoryid" = "" ]; then
+    echo "Aktenschrank nicht angegeben";
+    sleep 0;
+    exit 2;
+fi
+
+if [ "$repositoryid" = "" ]; then
+    echo "Keine Daten vorhanden";
+    sleep 0;
+    exit 3; 
+fi
+
+getroot="SELECT root, name FROM mne_repository.repository WHERE repositoryid = 'par1'";
+get_root()
+{
+    par=$1
+    root=${par/|*};par=${par#*|}
+}
+
+getallfiles="SELECT t1.name, t0.filename, t1.name || '/' || t0.filename FROM mne_repository.fileinterests t0 INNER JOIN mne_repository.repository t1 ON ( t0.repositoryid = t1.repositoryid ) WHERE personid = 'par1' AND t0.repositoryid = 'par2' AND t0.active = true AND (( mne_catalog.acttime() - lastsend ) - ( 14 * 24 * 3600 )) < 0";
+getfiles="SELECT t1.name, t0.filename, t1.name || '/' || t0.filename FROM mne_repository.fileinterests t0 INNER JOIN mne_repository.repository t1 ON ( t0.repositoryid = t1.repositoryid )LEFT JOIN mne_repository.filedata t2 ON ( t0.repositoryid = t2.repositoryid AND t0.filename = t2.filename) WHERE personid = 'par1' AND t0.repositoryid = 'par2' AND t0.active = true GROUP BY  t1.name, t0.filename, t0.repdate HAVING ( MAX(t2.repdate) != t0.repdate ) = true";
+get_file()
+{
+    par=$1
+    name=${par/|*};      par=${par#*|}
+    filename=${par/|*};  par=${par#*|}
+    fullname=${par/|*};  par=${par#*|}
+}
+updaterep="UPDATE mne_repository.fileinterests t0 \
+           SET repdate = t1.repdate \
+           FROM ( SELECT repositoryid, filename, MAX(repdate) AS repdate \
+                  FROM mne_repository.filedata \
+                  GROUP BY repositoryid, filename ) t1 \
+           WHERE t0.repositoryid = t1.repositoryid AND t0.filename = t1.filename AND t0.personid = 'par1' AND t0.repositoryid = 'par2'"
+
+get_root `get_data "$getroot" $repositoryid`
+
+echo $root >&2
+if [ $haveid = 0 ] && [ "$root" = "" ]; then
+    echo "Aktenschrank unbekannt";
+    sleep 0;
+    exit 3;
+fi
+
+lines=`get_data "$getfiles" $user $repositoryid | wc -l | sed -e "s/ //g"`
+if [ "$lines" = "0" ]; then
+  gf="$getallfiles"
+  lines=`get_data "$gf" $user $repositoryid | wc -l  | sed -e "s/ //g"`
+  if [ "$lines" = "0" ]; then
+      echo "$linkinvalid";
+      sleep 0;
+      exit 10
+  fi
+else
+  gf="$getfiles"
+fi
+
+
+( get_data "$gf" $user $repositoryid | \
+  while read line; 
+  do
+     get_file "$line"
+     echo "$fullname"
+  done )  | ( r="root$root"; cd ${!r}; zip $outfile -@ 2>&1 >/dev/null; exit $? )
+
+result=$?
+
+if [ "$result" = "0" ];then
+    get_data "$updaterep" $user $repositoryid 1>/dev/null 2>&1
+fi
+
+cat $outfile
+rm $outfile
+
+sleep 0
+exit $result

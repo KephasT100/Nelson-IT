@@ -1,0 +1,25 @@
+#whereframe {
+	position: absolute;
+	top: var(--titleheight);
+	left: 0px;
+	right: 0px;
+
+	padding: var(--qmargin);
+	overflow: auto;
+}
+
+.notitle + #whereframe {
+	top: 0px;
+}
+
+div#whereframe + div#webletbutton {
+	top: 4ex;
+}
+
+.contenttable {
+    white-space: nowrap;	
+}
+
+.tablefilter {
+	margin-bottom: var(--qmargin);
+}

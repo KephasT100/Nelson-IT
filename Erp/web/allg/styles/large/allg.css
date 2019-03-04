@@ -1,0 +1,21 @@
+@import "../default/variable.css";
+@import "../default/tag.css";
+@import "../default/table.css";
+@import "../editor/default/content.css";
+
+:root {
+	--font_normal: 16px;
+	--font_large: 19px;
+	--font_Large: 23px;
+	--font_huge: 28px;
+	--font_Huge: 33px;
+	
+	--lineheight_normal: 32px;
+	--select_lineheight: 24px;
+}
+
+body[aria-view-mode="tablet"] {
+}
+
+body[aria-view-mode="mobile"] {
+}

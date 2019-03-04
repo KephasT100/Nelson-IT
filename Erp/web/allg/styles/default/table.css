@@ -1,0 +1,149 @@
+/* tabellen definitionen */
+
+table{
+	padding: 0px;
+	margin: 0px;
+    border: 0px none #ffffff;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+table.right {
+	padding: 0px;
+	margin:  0px;
+	margin-left: auto;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+table.left {
+	padding: 0px;
+	margin:  0px;
+	margin-right: auto;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+table.center{
+	padding: 0px;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+thead {
+	background: linear-gradient(to bottom, var(--background), var(--lightcolor1));
+	white-space: nowrap;
+}
+thead td.active {
+	font-weight: bold;
+	background: linear-gradient(to bottom, var(--background), var(--darkcolor1));
+}
+
+table.border, table.border > tr > td, table.border > thead > tr > td, table.border > tbody > tr > td {
+    border: var(--border);
+	border-collapse: collapse;
+}
+
+table.padding > tr > td, table.padding > thead > tr > td, table.padding > tbody > tr > td {
+    padding: var(--margin);
+}
+
+td.center {
+	text-align: center;
+}
+
+td.left {
+	text-align: left;
+}
+
+td.right {
+	text-align: right;
+}
+
+td.justify {
+	text-align: justify;
+}
+
+tr.active0 td, tr.active0 input, tr.active0 textarea, tr.active0 select {
+	color: #808080;
+}
+tr.active1 td {
+}
+
+tr.sum1 {
+}
+tr.sum2 {
+    font-weight: bold;
+}
+tr.sum3 {
+    font-weight: bold;
+    background-color: #e0e0e0;
+}
+
+tr.sum2 input, tr.sum3 input, tr.sum2 textarea, tr.sum3 textarea, tr.sum2 select, tr.sum3 select {
+    visibility: hidden; 
+}
+
+tr.resultnotok {
+    background-color : #ff8080;
+}
+tr.resultok {
+}
+
+tr.day1 td {
+    color: #0000C0;
+}
+tr.day7 td {
+    color: #8080ff;
+}
+
+tbody td.selectlist {
+    border-right-width: 3px;
+}
+
+td.padding {
+	padding: var(--margin);
+}
+td.paddingb {
+	padding-bottom: var(--margin);
+}
+td.paddingt {
+	padding-top: var(--margin);
+}
+td.paddingl {
+	padding-left: var(--margin);
+}
+td.paddingr {
+	padding-right: var(--margin);
+}
+
+td.button {
+    border: 0px solid;
+}
+td.buttonfirst {
+    padding-top: 0px;
+}
+td.buttonlast {
+}
+
+table.fixheight td {
+    height: 20px;
+    padding-top: 0px;
+    padding-bottom : 0px;
+}
+
+td.height1, td.height1 :first-child {
+    height : 16px;
+    overflow : hidden;
+}
+
+td.height2, td.height2 :first-child {
+    height : 16px;
+    overflow : hidden;
+}
+
+td.height3, td.height3 :first-child {
+    height : 16px;
+    overflow : hidden;
+}
+
+

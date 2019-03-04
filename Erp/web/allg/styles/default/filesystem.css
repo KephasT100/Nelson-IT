@@ -1,0 +1,122 @@
+div.fileshow {
+	width : 100%
+
+    -webkit-user-select: none;
+	-ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+div.fileshow div#webletbutton {
+	display: none;
+}
+
+div.fileshow div#webletcontent {
+    width: 100%;
+    margin: 0px;
+    margin-top: var(--qmargin);
+}
+
+div.fileshow div#contentFrame {
+	white-space: normal;
+}
+
+div.fileshow  table.filelist {
+    border : 1px solid #eee;
+    width: 100%;
+}
+
+div.fileshow  td.filelist, div.fileshow td.activefilelist {
+    padding : 4px;
+    border : 1px solid #eee;
+}
+
+div.fileshow td.activefilelist {
+	background-color: var(--lightcolor1);
+}
+
+div.fileshow div.file, div.fileshow div.folder {
+    font-family: SymbolFont1;
+    color: var(--lightcolor1);
+}
+
+div.fileshow div.file:after {
+    content: '\f15b';
+}
+div.fileshow div.folder:after {
+    content: '\f07b';
+}
+div.fileshow div.fileslink:after {
+    content: '\f0c1';
+}
+
+
+
+div.file_rsymbol {
+	display: inline-block;
+	margin: 4px;
+	border: var(--lightborder);
+	padding: 4px;
+}
+
+table.file_rsymbol_ele td {
+    text-align: center;
+}
+
+table.file_rsymbol_ele input {
+    display: inline;
+    filter: none;
+}
+
+table.file_rsymbol_ele tr:first-child td:first-child {
+    text-align: left;
+}
+
+table.file_rsymbol_ele tr:first-child td:last-child {
+    text-align: right;
+}
+
+table.file_rsymbol_ele td.file_rsymbol_ele_img {
+    height: 160px;
+    width: 160px;
+}
+
+div.file_rsymbol_ele_empty {
+	display: none;
+}
+
+div.file_rsymbol_ele_empty_active {
+	display: inline-block;
+}
+
+div.file_rsymbol_ele_empty_active div.file_rsymbol_ele_empty {
+	display: inline-block;
+	position: relative;
+	height: 150px;
+	width: 120px;
+	background-color: #a0a0a0;
+}
+
+div.file_rsymbol_ele_move {
+	position: absolute;
+	z-index: 100000;
+}
+
+div.file_rsymbol_ele_over {
+	background-color: var(--lightcolor2);
+	border-color: var(--bordercolor);
+}
+
+div.file_rsymbol_ele_selected {
+	border: var(--darkborder);
+}
+
+input.file_rsymbol_name {
+	border: inherit;
+    background-color: transparent;
+    text-align: center;
+}
+input.file_rsymbol_name_selected {
+	border: var(--darkborder);
+    background-color: var(--lightcolor2);
+}

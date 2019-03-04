@@ -1,0 +1,62 @@
+div.treelink::before {
+    background-size: 8px;
+	background-repeat: no-repeat;
+	background-position: 100% 70%;
+	padding-right: 4px;
+}
+
+div.treelinkM::before {
+    background-image: url('/images/repository/default/mod.svg');
+	background-position: bottom;
+}
+
+div.treelinkD, div.treelinkAD {
+	text-decoration: line-through;
+    color: #800000;
+}
+
+div.treelinkD::before, div.treelinkAD::before {
+    background-image: url('/images/repository/default/del.svg');
+}
+
+div.treelinkA::before {
+    background-image: url('/images/repository/default/add.svg');
+}
+
+div.treelinkY::before {
+    background-image: url('/images/repository/default/notadd.svg');
+}
+
+div.treelinkR::before {
+    background-image: url('/images/repository/default/ren.svg');
+}
+
+#nameOutput {
+	display: inline-block;
+	font-weight: bold;
+	margin-bottom: var(--dmargin);
+}
+
+tr.interesse td, td.interesse, tr.send1 td, td.send1 {
+    background-color: #ffa858;
+}
+
+tr.sendtrue td, tr.sendwahr td, tr.send2 td, td.sendtrue, td.sendwahr , td.send2 {
+    background-color: #fb7b7b;
+}
+
+tr.fetchtrue td, tr.fetchwahr td, td.fetchtrue, td.fetchwahr, tr.send3 td, td.send3 {
+    background-color: #80ff80
+}
+
+tr.interesse td:first-child,  tr.send1 td:first-child, td.send1,
+tr.sendtrue td:first-child, tr.sendwahr td:first-child, tr.send2 td:first-child,
+tr.fetchtrue td:first-child, tr.fetchwahr td:first-child, tr.send3 td:first-child {
+    background-color: unset;
+}
+
+tr.interesse td:first-child.active,  tr.send1 td:first-child.active,
+tr.sendtrue td:first-child.active, tr.sendwahr td:first-child.active, tr.send2 td:first-child.active,
+tr.fetchtrue td:first-child.active, tr.fetchwahr td:first-child.active, tr.send3 td:first-child.active {
+    background-color: var(--lightcolor2)
+}

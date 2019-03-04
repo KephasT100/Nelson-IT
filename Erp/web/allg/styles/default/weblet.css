@@ -1,0 +1,499 @@
+.background {
+	background-color: var(--background);
+}
+
+#mainwindow {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	z-index: 1;
+
+	font-size: var(--font_normal);
+}
+
+.maintop {
+	display: table;
+	width: 100%;
+	border-bottom: var(--border);
+}
+
+#mainrow {
+	display: table-row;
+}
+
+#mainrow > div {
+	display: table-cell;
+}
+
+#mainright {
+	text-align: right;
+    padding-right: var(--qmargin);
+    vertical-align: middle;
+}
+
+div.webletmain {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: var(--titleheight);
+	bottom: 0px;
+	overflow: auto;
+	white-space: nowrap;
+}
+
+.sliderauto > div.sliderframe1 > div.webletmain {
+    overflow: visible;
+}
+
+.subweblet .popupcontent {
+	overflow: unset;
+}
+
+.popupcontent div.weblettitle, .popupcontent div.webletmain {
+	position: relative;
+	top: 0px;
+}
+
+.subweblet .popupcontent div.weblettitle, .subweblet .popupcontent div.webletmain {
+	position: absolute;
+}
+
+.subweblet .popupcontent div.webletmain {
+	top: var(--titleheight);
+}
+
+.subweblet .popupcontent .notitle + div.webletmain {
+	top: 0px;
+}
+
+.popupcontent div.webletmain {
+	overflow: visible;
+}
+.subweblet .popupcontent div.webletmain {
+	overflow: auto;
+}
+
+div.waitframe {
+	position: absolute;
+	z-index: 100000;
+	top: 0px;
+	left : 0px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.3);
+	font-size: var(--font_huge);
+	color : var(--darkcolor1);
+	display: none;
+}
+
+div.waitframe div {
+	position: relative;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+div.waitframe.show {
+	display: block;
+}
+
+div#webletbutton, div#webletcontent {
+	display: inline-block;
+	vertical-align: top;
+	margin: var(--dmargin);
+}
+
+div#webletbutton {
+	position: sticky;
+	position: -webkit-sticky;
+	left: var(--dmargin);
+	top: var(--dmargin);
+	background: var(--background_transparent);
+	padding-bottom: var(--dmargin);
+	z-index: 1;
+}
+
+div#webletbutton:empty {
+    display: none;
+}
+
+div#webletbutton input[type="button"].mobile {
+    display: none;
+}
+
+div#webletbutton .select {
+	font-family: SymbolFont1;
+}
+
+div.weblettitle {
+    position: absolute;
+    width: 100%;
+    font-size: x-large;
+	line-height: var(--titleheight);
+    background: linear-gradient(to bottom, var(--background), var(--lightcolor1));
+    padding: 0px var(--dmargin);
+    white-space: nowrap;
+}
+
+div.weblettitlearea {
+	display: inline;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+div.weblettitleleft {
+    padding-left: var(--dmargin);
+}
+
+div.weblettitleright {
+    position: absolute;
+    display: inline-flex;
+	right: 0px;
+	height: var(--titleheight);
+    background: linear-gradient(to bottom, var(--background), var(--lightcolor1));
+}
+
+.notitle + div.webletmain {
+    top: 0px;
+}
+
+.notitle div.weblettitleleft {
+    display: none;
+}
+
+.notitle div.weblettitlemiddle {
+    display: none;
+}
+
+.notitle div.weblettitleright {
+	line-height: var(--iconpicsize);
+	background: var(--background);
+	margin: 0px;
+	z-index: 10;
+}
+
+.notitle.scroll div.weblettitleright {
+	right: 16px;
+}
+
+.popupcontent .notitle div.weblettitleright {
+	display: none;
+}
+
+div.weblettitleright > div {
+    font-family: SymbolFont1;
+    font-size: var(--iconfontsize);
+    padding-right: var(--qmargin);
+    color: var(--darkcolor1)
+}	
+
+.notitle div.weblettitleright > div {
+    padding-right: var(--dmargin);
+    color: var(--lightcolor1)
+}
+
+div#webletbutton input[type='button'], div#webletbutton button {
+	display: block;
+	position: relative;
+	width: 100%;
+	margin-bottom: var(--margin);
+}
+
+.webletbutton .ele-wrapper span {
+    line-height: var(--lineheight_normal);
+    padding-right: var(--dmargin);
+}
+
+.weblettitle div.button {
+    box-shadow: none;
+    background: none;
+    border: 0px;
+    color: var(--darkcolor1);
+    font-size: var(--iconfontsize);
+    line-height: var(--titleheight);
+    width: auto;
+}
+
+div#webletbutton div.webletbutton {
+	position: relative;
+	height: 2ex;
+}
+
+div.webletfullscreen {
+	position : absolute;
+	top: 0px;
+	left: 0px;
+	height : 100%;
+	width : 100%;
+	background-color: var(--background);
+	z-index : 300;
+}
+
+.inputarea {
+	display: flex;
+}
+
+.inputarea + .inputarea {
+	margin-top: var(--qmargin);
+}
+
+.inputgroup {
+    display: inline-table;
+    border-collapse: collapse;
+}
+
+.inputsingle {
+    display: table-row;
+	border: var(--border);
+    border-collapse: collapse;
+
+    line-height: var(--lineheight_normal);
+    white-space: nowrap;
+}
+
+.inputsinglehead {
+    display: table-caption;
+	border: var(--border);
+	border-bottom: 0px;
+    border-collapse: collapse;
+
+    line-height: var(--lineheight_normal);
+    white-space: nowrap;
+    padding-left: var(--qmargin);
+    font-weight: bold;
+}
+
+.inputarea.table .inputsingle > .ele-wrapper {
+    border: var(--border);
+    padding-left: var(--dmargin);
+    padding-right: var(--dmargin);
+}
+
+.inputarea.table .inputsingle::after {
+    content: initial;
+}
+
+.inputarea.table .inputgroup > .inputsingle:first-child {
+    font-weight: bold;
+}
+
+
+.label {
+	text-align: right;
+    padding-left: var(--qmargin);
+}
+
+div.label .label {
+	text-align: unset;
+	padding-left: unset;
+}
+
+.label::after {
+	content: ':';
+    padding-right: var(--qmargin);
+}
+
+.label:empty:after, div.label .label::after {
+    display: none;
+}
+
+.inputgroup + .inputgroup > .inputsingle, .inputgroup + .inputgroup > .inputsinglehead  {
+    border-left: 0px;
+}
+
+.inputsingle > .ele-wrapper {
+	display: table-cell;
+}
+
+.inputsingle .ele-wrapper + button, .inputsingle .ele-wrapper + input[type="button"] {
+	margin-left: var(--qmargin);
+}
+
+.inputsingle .multiheight {
+	vertical-align: top;
+	padding-top: var(--margin);
+}
+
+.inputsingle::after {
+    content: '';
+    padding-right: var(--qmargin);
+}
+
+
+.active {
+	background-color: var(--lightcolor2);
+}
+.modifyno {
+}
+
+.modifyok, div.input-wrapper.modifyok input, .modifyok div.checkbox-wrapper, div.select-wrapper.modifyok select {
+    background-color: var(--modifyokbackgroundcolor);
+    color: var(--modifyokcolor);
+}
+.modifywrong, div.input-wrapper.modifywrong input, .modifywrong div.checkbox-wrapper, div.select-wrapper.modifywrong select {
+    background-color: var(--modifywrongbackgroundcolor);
+    color: var(--modifywrongcolor);
+}
+
+.modifywarning, div.input-wrapper.modifywarning input,.modifywarning div.checkbox-wrapper, div.select-wrapper.modifywarning select {
+    background-color: var(--modifywarningbackgroundcolor);
+    color: var(--modifywarningcolor);
+}
+
+.modifywait, div.input-wrapper.modifywait input, .modifywait div.checkbox-wrapper, div.select-wrapper.modifywait select {
+    background-color: var(--modifywaitbackgroundcolor);
+    color: var(--modifywaitcolor);
+ 
+}
+
+div.input-wrapper.modifyok, div.input-wrapper.modifywrong, div.input-wrapper.modifywarning, div.input-wrapper.modifywait,
+div.select-wrapper.modifyok, div.select-wrapper.modifywrong, div.select-wrapper.modifywarning div.select-wrapper.modifywait,
+div.contain-checkbox {
+	background-color: inherit;
+	color: inherit;
+}
+
+	
+.hint {
+	background: #fff;
+	background-color: rgba(255,255,255,0.75);
+	border: 1px solid #000000;
+	border-radius: 4px;
+	padding: 2px;
+	white-space: nowrap;
+}
+
+.treeselect #webletcontent {
+    border: var(--border);
+}
+
+.treeselect .path {
+	font-weight: bold;
+	margin-bottom: var(--dmargin);
+	border-bottom: var(--border);
+	padding: var(--dmargin);
+}
+
+.treeselect .pathbottom {
+	font-weight: bold;
+	margin-top: var(--dmargin);
+	border-top: var(--border);
+	padding: var(--dmargin);
+}
+
+	
+body[aria-view-mode="mobile"] .nomobile {
+	display: none !important;
+}
+
+body[aria-view-mode="mobile"] #mainwindow {
+	
+}
+
+body[aria-view-mode="mobile"] #sltop0 {
+	border-bottom: 0px;
+}
+body[aria-view-mode="mobile"] div.webletmain {
+	border-bottom: 10px solid var(--darkcolor1);
+	margin-bottom: 48px;
+}
+
+body[aria-view-mode="mobile"] .popupcontent div.webletmain {
+	border-bottom: 0px;
+}
+
+body[aria-view-mode="mobile"] div#webletbutton input[type="button"].mobile {
+    display: inline-block;
+}
+
+body[aria-view-mode="mobile"] div#webletcontent {
+	position: relative;
+	display: block;
+	z-index: 1;
+}
+
+body[aria-view-mode="mobile"] div#webletbutton {
+	display: block;
+	z-index: 10;
+	white-space: initial;
+}
+
+body[aria-view-mode="mobile"] div#webletbutton span {
+	padding-left: var(--qmargin);
+}
+
+body[aria-view-mode="mobile"] div.weblettitle, body[aria-view-mode="mobile"] div.webletmain {
+	position: relative;
+	top: 0px;
+}
+
+body[aria-view-mode="mobile"] div#webletbutton input, body[aria-view-mode="mobile"] div#webletbutton button, body[aria-view-mode="mobile"] div.webletbutton, body[aria-view-mode="mobile"] #webletbutton > div  {
+	display: inline-block;
+	width: initial;
+	margin-right: var(--dmargin);
+	overflow: visible;
+}
+
+body[aria-view-mode="mobile"] div#webletbutton div.webletbutton:empty  {
+	display: none;
+}
+
+body[aria-view-mode="mobile"] .inputgroup, body[aria-view-mode="mobile"] .inputsingle, body[aria-view-mode="mobile"] .inputsingle > .ele-wrapper   {
+	display: block;
+}
+
+body[aria-view-mode="mobile"] .inputsingle + .inputsingle {
+	border-top: 0px;
+}
+
+body[aria-view-mode="mobile"] .label {
+	text-align: left;
+    padding-left: var(--qmargin);
+}
+	
+body[aria-view-mode="mobile"] .inputsingle .ele-wrapper + button, body[aria-view-mode="mobile"] .inputsingle .ele-wrapper + input[type="button"] {
+	margin-left: 0px;
+	margin-top: var(--qmargin);
+}
+
+body[aria-view-mode="mobile"] .inputarea {
+	display: block;
+}
+
+body[aria-view-mode="mobile"] .inputgroup {
+    display: block;
+    margin-bottom: var(--qmargin);
+}
+
+body[aria-view-mode="mobile"] .inputgroup + .inputgroup > .inputsingle {
+    border-left: var(--border); 
+}
+
+body[aria-view-mode="mobile"] .inputsingle::after {
+	content: unset;
+}
+
+body[aria-view-mode="mobile"] .inputsingle > .ele-wrapper {
+	padding-left: var(--qmargin);
+	line-height: initial;
+    margin-bottom: var(--qmargin);
+}
+
+body[aria-view-mode="mobile"] div.ele-wrapper > div.ele-wrapper {
+    display: inline-block;
+}
+
+body[aria-view-mode="mobile"] div.input-wrapper {
+	display: block;
+}
+
+body[aria-view-mode="mobile"] div.checkbox-wrapper {
+	vertical-align: top;
+}
+
+body[aria-view-mode="mobile"] .inputsingle > .label {
+	margin-bottom: var(--margin);
+}
+	

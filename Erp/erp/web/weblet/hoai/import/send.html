@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//DE"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<script language="JavaScript" src="/js/basic/mne_amisc.js"  type="text/JavaScript"></script>
+<script language="JavaScript" src="/js/ajax/mne_ajax.js"  type="text/JavaScript"></script>
+<script type="text/javascript">
+window.onload = function()
+{
+  window.ajax = new MneAjaxData(window);
+  window.ajax.loadCss("allg.css");
+  window.ajax.loadCss("main.css");
+  window.ajax.loadCss("os/" + window.ajax.os + ".css");
+
+  {
+    var timeout = function() { try {  window.frameElement.weblet.sendready.call(window.frameElement.weblet); } catch(e) { alert(e.message); } }
+    window.setTimeout(timeout, 10);
+  }
+}
+</script>
+</head>
+<body style="padding: 0px; margin: 0px">
+<div id="content" style="position:absolute; white-space: nowrap;"><form id="fileimport" action="/utils/file.txt" method="post" enctype="multipart/form-data" target="dataframe">
+<select name="iconv"   id="iconvInput"></select>
+<input name="script"  id="script" type="hidden" value="window.onload = function() { try { window.frameElement.weblet.dataready.call(window.frameElement.weblet); } catch(e) { alert(e.message); }; }">
+<input name="data"    id="data"   style="padding: 4px; min-width:500px" type="file" size="50" maxlength="100000" accept="*/*"></form></div>
+</body>
+</html>

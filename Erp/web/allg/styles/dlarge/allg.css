@@ -1,0 +1,59 @@
+@import "../default/variable.css";
+@import "../default/tag.css";
+@import "../default/table.css";
+@import "../editor/default/content.css";
+
+:root {
+	--font_normal: 16px;
+	--font_large: 19px;
+	--font_Large: 23px;
+	--font_huge: 28px;
+	--font_Huge: 33px;
+	
+	--lineheight_normal: 32px;
+	--select_lineheight: 24px;
+	
+	--background: #0f0f0f;
+	--background_transparent: rgba(15,15,15,0.5);
+	--color: #fff;
+	
+    --rdonlycolor: #a0a0a0;
+    --rdonlybackground: transparent;
+	
+	--button_color: #404040;
+    --button_background: #0f0f0f;
+    --button_boxshadow: #a0a0a0 -2px -2px 3px;
+    --button_border: 1px solid #aaa;
+	
+	--button_background_active: #606060;
+	--button_boxshadow_active:  #E0e0e0 -1px -1px 2px;
+	--button_border_active: 1px inset 1px inset rgba(0,0,0,0.2);
+
+	--checkbox_border: 1px solid #c0c0c0;
+	
+	--boxshadow: 0px 0px 4px 1px rgba(255, 255, 255, 0.6);
+}
+
+body[aria-view-mode="tablet"] {
+	--font_normal: 16px;
+	--font_large: 19px;
+	--font_Large: 23px;
+	--font_huge: 28px;
+	--font_Huge: 33px;
+	
+	--lineheight_normal: 32px;
+	--select_lineheight: 24px;
+	
+}
+
+body[aria-view-mode="mobile"] {
+	--font_normal: 16px;
+	--font_large: 19px;
+	--font_Large: 23px;
+	--font_huge: 28px;
+	--font_Huge: 33px;
+	
+	--lineheight_normal: 32px;
+	--select_lineheight: 24px;
+	
+}

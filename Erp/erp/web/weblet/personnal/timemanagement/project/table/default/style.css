@@ -1,0 +1,80 @@
+#timemanagementprojecttable td.personnal_timemanagement_project {
+    height: 20px;
+}
+#timemanagementprojecttable td.personnal_timemanagement_projectmonth {
+    padding: 0px;
+    height: 20px;
+}
+#timemanagementprojecttable td.personnal_timemanagement_projectname {
+    padding: 2px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 20px;
+}
+
+#timemanagementprojecttable td.personnal_timemanagement_projecttd0 {
+    background-color: #e0e0e0;
+}
+#timemanagementprojecttable td.personnal_timemanagement_projecttd6 {
+    background-color: #f0f0f0;
+}
+
+#timemanagementprojecttable td.personnal_timemanagement_projecthead {
+    padding: 2px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+#timemanagementprojecttable td.personnal_timemanagement_projecthead.personnal_timemanagement_projecttd0 {
+    background-color: #a0a0a0;
+}
+#timemanagementprojecttable td.personnal_timemanagement_projecthead.personnal_timemanagement_projecttd6 {
+    background-color: #b0b0b0;
+}
+
+#timemanagementprojecttable div.personnal_timemanagement_projectslot{
+    width: 32px;
+    position: relative;
+    height: 18px;
+    font-size: 10px;
+    overflow : hidden;
+}
+#timemanagementprojecttable div.personnal_timemanagement_projectslotelement0 {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0%;
+}
+#timemanagementprojecttable div.personnal_timemanagement_projectslotelement1 {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 25%;
+}
+#timemanagementprojecttable div.personnal_timemanagement_projectslotelement2 {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+}
+#timemanagementprojecttable div.personnal_timemanagement_projectslotelement3 {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 75%;
+}
+
+#timemanagementprojecttable #timesTable {
+    position: relative;
+    overflow: visible;
+    padding: 1px;
+}
+#timemanagementprojecttable #namesTable {
+    max-width: 400px;
+    overflow: visible;
+    padding: 1px;
+}
+
